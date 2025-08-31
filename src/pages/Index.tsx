@@ -318,6 +318,266 @@ if __name__ == "__main__":
         </div>
       </section>
 
+      {/* Features Section */}
+      <section className="container mx-auto px-6 py-24">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold mb-6">
+            <span className="text-primary">Powerful</span> Features
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Everything you need for modern development in one seamless platform
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Feature Cards */}
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft hover:shadow-glow transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
+                <Code className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Containerized Environments</h3>
+              <p className="text-muted-foreground">
+                Isolated, secure coding environments with pre-configured runtime environments for every project.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft hover:shadow-glow transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-6">
+                <Settings className="h-6 w-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Real-time Execution</h3>
+              <p className="text-muted-foreground">
+                Interactive terminal, live code execution, and instant feedback for rapid development cycles.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft hover:shadow-glow transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
+                <Save className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Persistent Storage</h3>
+              <p className="text-muted-foreground">
+                Your code and projects are persistent across sessions. Never lose your work again.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft hover:shadow-glow transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-6">
+                <Folder className="h-6 w-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Sandboxed Execution</h3>
+              <p className="text-muted-foreground">
+                Secure execution environments with resource limits that ensures safe code execution.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft hover:shadow-glow transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
+                <Plus className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Real-time Collaboration</h3>
+              <p className="text-muted-foreground">
+                Code together with your team in real-time with synchronized editing and shared workspaces.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft hover:shadow-glow transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-6">
+                <Code className="h-6 w-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Git Integration</h3>
+              <p className="text-muted-foreground">
+                Built-in Git support with visual branching, merging, and collaborative version control.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Language Support Section */}
+      <section className="container mx-auto px-6 py-24 bg-muted/20">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold mb-6">
+            Language <span className="text-primary">Support</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Full-featured development environments for all major programming languages
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SUPPORTED_LANGUAGES.map((lang) => (
+            <Card key={lang.id} className="bg-card/70 backdrop-blur-sm border-border/50 shadow-soft hover:shadow-glow transition-all duration-300 group">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="text-3xl">{lang.icon}</div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {lang.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      {lang.version}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Full IDE support with syntax highlighting, debugging, and package management
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Developer Resources Section */}
+      <section className="container mx-auto px-6 py-24">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold mb-6">
+            Developer <span className="text-primary">Resources</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Comprehensive guides and documentation to accelerate your development workflow
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Quick Start Guide */}
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <Code className="h-4 w-4 text-primary" />
+                </div>
+                Quick Start Guide
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground">
+                Get up and running in minutes with our streamlined onboarding process. No downloads, no setup required.
+              </p>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                  Create your account to access the IDE framework
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                  Choose from 9+ programming languages
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                  Start coding with our intelligent code editor
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                  Deploy and share your projects seamlessly
+                </li>
+              </ul>
+              <Button className="mt-6 bg-gradient-primary hover:opacity-90">
+                View Documentation
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* API & Integrations */}
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-soft">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center">
+                  <Settings className="h-4 w-4 text-accent" />
+                </div>
+                API & Integrations
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground">
+                Extend TAG with our comprehensive RESTful API and webhooks. Build custom workflows and integrate with your existing tools.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Badge variant="secondary">REST API</Badge>
+                  <span className="text-sm text-muted-foreground">Complete API documentation</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Badge variant="secondary">WebHooks</Badge>
+                  <span className="text-sm text-muted-foreground">Real-time event notifications</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Badge variant="secondary">SDKs</Badge>
+                  <span className="text-sm text-muted-foreground">Official libraries for multiple platforms</span>
+                </div>
+              </div>
+              <Button variant="outline" className="mt-6">
+                Explore API
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Advanced Features & Community Support */}
+        <div className="grid lg:grid-cols-2 gap-12 mt-12">
+          <div>
+            <h3 className="text-2xl font-bold mb-6">Advanced Features</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="font-medium">Real-time syntax highlighting & auto-completion</p>
+                  <p className="text-sm text-muted-foreground">IntelliSense-powered code assistance</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="font-medium">Environment code templates and debugging</p>
+                  <p className="text-sm text-muted-foreground">Pre-configured setups for faster development</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="font-medium">Multi-file collaborative editing with team chat</p>
+                  <p className="text-sm text-muted-foreground">Work together seamlessly with your team</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <div>
+                  <p className="font-medium">Integrated terminal with full shell access</p>
+                  <p className="text-sm text-muted-foreground">Complete command-line interface</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-2xl font-bold mb-6">Community & Support</h3>
+            <p className="text-muted-foreground mb-6">
+              Join thousands of developers in our thriving community. Get help, share knowledge, and collaborate on amazing projects.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button className="bg-gradient-primary hover:opacity-90">
+                Join Community - 50K+
+              </Button>
+              <Button variant="outline">
+                Get Support - 24/7
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="container mx-auto px-6 py-16 text-center">
         <div className="max-w-2xl mx-auto">
@@ -335,6 +595,75 @@ if __name__ == "__main__":
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border/50 bg-muted/30">
+        <div className="container mx-auto px-6 py-12">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                  <Code className="h-4 w-4 text-primary-foreground font-bold" />
+                </div>
+                <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">TAG</span>
+              </div>
+              <p className="text-muted-foreground mb-4 max-w-md">
+                Transforming development with cloud-native coding environments. Build, deploy, and collaborate from anywhere.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                © 2024 TAG IDE. All rights reserved. Made with ❤️ for developers.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Product</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">API Reference</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <Separator className="my-8" />
+          
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex gap-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-primary transition-colors">Cookie Policy</a>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-muted-foreground">Follow us:</span>
+              <div className="flex gap-2">
+                <Button variant="ghost" size="sm" className="w-8 h-8 p-0">
+                  <span className="sr-only">Twitter</span>
+                  🐦
+                </Button>
+                <Button variant="ghost" size="sm" className="w-8 h-8 p-0">
+                  <span className="sr-only">GitHub</span>
+                  🐙
+                </Button>
+                <Button variant="ghost" size="sm" className="w-8 h-8 p-0">
+                  <span className="sr-only">Discord</span>
+                  💬
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
