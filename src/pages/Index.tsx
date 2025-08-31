@@ -116,140 +116,225 @@ if __name__ == "__main__":
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="flex items-center justify-between px-6 py-3">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <Code className="h-5 w-5 text-primary-foreground" />
+      <header className="border-b border-border/50 bg-background/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="container mx-auto flex items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow">
+                <Code className="h-6 w-6 text-primary-foreground font-bold" />
               </div>
               <div>
-                <h1 className="text-xl font-bold">Code Editor</h1>
-                <p className="text-xs text-muted-foreground">Multi-Language IDE</p>
+                <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">TAG</h1>
+                <p className="text-sm text-muted-foreground">Cloud-powered Online IDE</p>
               </div>
             </div>
             
-            <Separator orientation="vertical" className="h-8" />
-            
+            <nav className="hidden md:flex items-center gap-8">
+              <a href="#" className="text-foreground hover:text-primary transition-colors">Home</a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Documentation</a>
+            </nav>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" className="hidden md:flex">
+              Sign In
+            </Button>
+            <Button size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-glow">
+              Get Started
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="container mx-auto px-6 py-16 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-6xl md:text-7xl font-bold mb-8">
+            <span className="bg-gradient-primary bg-clip-text text-transparent">Cloud-powered</span>
+            <br />
+            <span className="text-foreground">Online IDE</span>
+          </h1>
+          
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+            Access your personal, containerized coding environment with{' '}
+            <span className="text-primary font-semibold">real-time execution</span>,{' '}
+            <span className="text-accent font-semibold">collaborative features</span>, and{' '}
+            <span className="text-primary font-semibold">unlimited possibilities</span>.
+          </p>
+
+          <div className="flex items-center justify-center gap-4 mb-16">
             <LanguageSelector 
               selectedLanguage={activeFile?.language || 'python'}
               onLanguageChange={changeLanguage}
             />
-          </div>
-
-          <div className="flex items-center gap-2">
             <Button
               onClick={saveFile}
               variant="outline"
               size="sm"
               disabled={!activeFile?.isDirty}
+              className="shadow-soft"
             >
-              <Save className="h-4 w-4 mr-1" />
+              <Save className="h-4 w-4 mr-2" />
               Save
             </Button>
             <Button
               onClick={createNewFile}
               variant="outline"
               size="sm"
+              className="shadow-soft"
             >
-              <Plus className="h-4 w-4 mr-1" />
+              <Plus className="h-4 w-4 mr-2" />
               New File
             </Button>
-            <Button variant="ghost" size="sm">
-              <Settings className="h-4 w-4" />
+          </div>
+        </div>
+      </section>
+
+      {/* IDE Interface */}
+      <section className="container mx-auto px-6 pb-16">
+        <div className="bg-card/50 backdrop-blur-sm rounded-3xl border border-border/50 shadow-glow overflow-hidden">
+          {/* IDE Header */}
+          <div className="flex items-center justify-between p-4 border-b border-border/50 bg-muted/20">
+            <div className="flex items-center gap-4">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-accent"></div>
+              </div>
+              <span className="text-sm text-muted-foreground font-mono">
+                {activeFile?.name || 'main.js'}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" className="text-xs">
+                <span className="w-2 h-2 rounded-full bg-accent mr-2"></span>
+                Copy
+              </Button>
+              <Button variant="ghost" size="sm" className="text-xs">
+                Reset
+              </Button>
+              <Button size="sm" className="bg-gradient-primary text-xs px-4">
+                ▶ Run
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex">
+            {/* Sidebar */}
+            <aside className="w-64 bg-sidebar/50 border-r border-sidebar-border/50">
+              <div className="p-4 border-b border-sidebar-border/50">
+                <div className="flex items-center gap-2">
+                  <Folder className="h-4 w-4 text-sidebar-foreground" />
+                  <span className="text-sm font-medium text-sidebar-foreground">Explorer</span>
+                </div>
+              </div>
+              
+              <div className="p-4">
+                <div className="space-y-1">
+                  {files.map((file) => (
+                    <div
+                      key={file.id}
+                      className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer transition-colors hover:bg-sidebar-accent/50 ${
+                        activeFileId === file.id ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
+                      }`}
+                      onClick={() => setActiveFileId(file.id)}
+                    >
+                      <span className="text-xs">
+                        {SUPPORTED_LANGUAGES.find(lang => lang.id === file.language)?.icon || '📄'}
+                      </span>
+                      <span className="text-xs text-sidebar-foreground flex-1 truncate">
+                        {file.name}
+                      </span>
+                      {file.isDirty && (
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </aside>
+
+            <div className="flex-1 flex">
+              {/* Code Editor */}
+              <div className="flex-1">
+                {/* File Tabs */}
+                <div className="flex items-center bg-muted/20 border-b border-border/50 overflow-x-auto">
+                  {files.map((file) => (
+                    <FileTab
+                      key={file.id}
+                      fileName={file.name}
+                      language={file.language}
+                      isActive={activeFileId === file.id}
+                      isDirty={file.isDirty}
+                      onSelect={() => setActiveFileId(file.id)}
+                      onClose={() => closeFile(file.id)}
+                    />
+                  ))}
+                </div>
+
+                <div className="p-6 h-[500px]">
+                  <div className="h-full rounded-xl border border-border/50 bg-background/50 overflow-hidden">
+                    <div className="flex items-center justify-between p-3 border-b border-border/50 bg-muted/30">
+                      <div className="flex items-center gap-2">
+                        <Code className="h-4 w-4 text-primary" />
+                        <span className="text-sm font-medium">Code Editor</span>
+                        <Badge variant="secondary" className="text-xs">
+                          {SUPPORTED_LANGUAGES.find(lang => lang.id === activeFile?.language)?.name}
+                        </Badge>
+                      </div>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <span>{activeFile?.language || 'python'}</span>
+                        <span>•</span>
+                        <span>UTF-8</span>
+                        <span>•</span>
+                        <span>Connected</span>
+                      </div>
+                    </div>
+                    <div className="h-[calc(100%-50px)]">
+                      <CodeEditor
+                        language={activeFile?.language || 'python'}
+                        value={activeFile?.content || ''}
+                        onChange={updateFileContent}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Console Output */}
+              <div className="w-80 border-l border-border/50 bg-muted/10">
+                <div className="p-6 h-[500px]">
+                  <OutputPanel
+                    language={activeFile?.language || 'python'}
+                    code={activeFile?.content || ''}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="container mx-auto px-6 py-16 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6">Start Coding Free</h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Join thousands of developers and start building amazing projects today.
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-glow px-8">
+              ▶ Start Coding Free
+            </Button>
+            <Button variant="outline" size="lg">
+              👁 Watch Demo
             </Button>
           </div>
         </div>
-      </header>
-
-      <div className="flex h-[calc(100vh-73px)]">
-        {/* Sidebar */}
-        <aside className="w-64 bg-sidebar border-r border-sidebar-border flex flex-col">
-          <div className="p-4 border-b border-sidebar-border">
-            <div className="flex items-center gap-2">
-              <Folder className="h-5 w-5 text-sidebar-foreground" />
-              <span className="font-medium text-sidebar-foreground">Explorer</span>
-            </div>
-          </div>
-          
-          <div className="flex-1 p-4">
-            <div className="space-y-1">
-              {files.map((file) => (
-                <div
-                  key={file.id}
-                  className={`flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-sidebar-accent ${
-                    activeFileId === file.id ? 'bg-sidebar-accent' : ''
-                  }`}
-                  onClick={() => setActiveFileId(file.id)}
-                >
-                  <span className="text-sm">
-                    {SUPPORTED_LANGUAGES.find(lang => lang.id === file.language)?.icon || '📄'}
-                  </span>
-                  <span className="text-sm text-sidebar-foreground flex-1 truncate">
-                    {file.name}
-                  </span>
-                  {file.isDirty && (
-                    <div className="w-2 h-2 rounded-full bg-accent"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </aside>
-
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col">
-          {/* File Tabs */}
-          <div className="flex items-center bg-muted/30 border-b border-border overflow-x-auto">
-            {files.map((file) => (
-              <FileTab
-                key={file.id}
-                fileName={file.name}
-                language={file.language}
-                isActive={activeFileId === file.id}
-                isDirty={file.isDirty}
-                onSelect={() => setActiveFileId(file.id)}
-                onClose={() => closeFile(file.id)}
-              />
-            ))}
-          </div>
-
-          {/* Editor and Output */}
-          <div className="flex-1 flex">
-            {/* Code Editor */}
-            <div className="flex-1 p-4">
-              <Card className="h-full bg-card border-border">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Code className="h-5 w-5" />
-                    {activeFile?.name || 'Editor'}
-                    <Badge variant="secondary" className="ml-2">
-                      {SUPPORTED_LANGUAGES.find(lang => lang.id === activeFile?.language)?.name}
-                    </Badge>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0 h-[calc(100%-80px)]">
-                  <CodeEditor
-                    language={activeFile?.language || 'python'}
-                    value={activeFile?.content || ''}
-                    onChange={updateFileContent}
-                  />
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Output Panel */}
-            <div className="w-96 p-4 pl-0">
-              <OutputPanel
-                language={activeFile?.language || 'python'}
-                code={activeFile?.content || ''}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };
