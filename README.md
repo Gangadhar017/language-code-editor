@@ -1,6 +1,6 @@
 
 
-## Project info nitin
+## Project info 
 
 **URL**: https://compiler-tag.netlify.app/
 
