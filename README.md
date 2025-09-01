@@ -1,16 +1,14 @@
-# Welcome to your Lovable project
+
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/d186c536-66d1-4ee2-8fdc-cba02d85f870
+**URL**: https://compiler-tag.netlify.app/
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d186c536-66d1-4ee2-8fdc-cba02d85f870) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
